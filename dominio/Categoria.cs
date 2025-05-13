@@ -2,9 +2,18 @@
 
 namespace dominio
 {
-    class Categoria
+    public class Categoria
     {
-        private int IdCategoria { get; set; }
-        private string DescripcionCat { get; set; }
+        public int IdCategoria { get; set; }
+        public string DescripcionCategoria { get; set; }
+
+
+        public override string ToString()
+        {
+            return DescripcionCategoria;
+        }
+
     }
+
+
 }

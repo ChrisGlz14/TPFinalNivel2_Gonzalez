@@ -29,6 +29,23 @@ namespace baseDatos
                     //articulo.IdArticulo = Convert.ToInt32(lector["IdArticulo"]);
                     articulo.Codigo = lector["Codigo"].ToString();
                     articulo.ImagenUrl = lector["ImagenUrl"].ToString();
+                    articulo.Descripcion = lector["DescripcionArticulo"].ToString();
+
+                    articulo.Categoria = new Categoria
+                    {
+                        IdCategoria = (int)lector["IdCategoria"],
+                        DescripcionCategoria = lector["DescripcionCategoria"].ToString()
+                    };
+
+                    articulo.Marca = new Marca
+                    {
+                        IdMarca = (int)lector["IdMarca"],
+                        DescripcionMarca = lector["DescripcionMarca"].ToString()
+                    };
+
+
+
+                    articulo.Precio = (decimal)lector["Precio"];
                     articulosLista.Add(articulo);
                 }
 

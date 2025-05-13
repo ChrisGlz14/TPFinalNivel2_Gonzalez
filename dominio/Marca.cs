@@ -1,8 +1,15 @@
 ﻿namespace dominio
 {
-    class Marca
+    public class Marca
     {
-        private int IdMarca { get; set; }
-        private string DescripcionMar { get; set; }
+        public int IdMarca { get; set; }
+        public string DescripcionMarca { get; set; }
+
+
+        public override string ToString()
+        {
+            return DescripcionMarca;
+        }
+
     }
 }
