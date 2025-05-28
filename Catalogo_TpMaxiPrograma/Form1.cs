@@ -2,6 +2,7 @@ using dominio;
 using negocio;
 using baseDatos;
 using System.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Catalogo_TpMaxiPrograma
 
@@ -9,26 +10,27 @@ namespace Catalogo_TpMaxiPrograma
 
     public partial class Form1 : Form
     {
-        private List<Articulo> listaArticulos;
-        public Form1()
+        private List<Articulo> listaArticulos = new List<Articulo>();
+        public Form1 ()
         {
             InitializeComponent();
         }
 
         private Point _mouseLoc;
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void panelMinMaxClose_MouseDown(object sender, MouseEventArgs e)
         {
             _mouseLoc = e.Location;
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void panelMinMaxClose_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 int dx = e.Location.X - _mouseLoc.X;
                 int dy = e.Location.Y - _mouseLoc.Y;
                 this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
+
             }
         }
 
@@ -57,6 +59,31 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
+        private void CargarOpcionesComboBox()
+        {
+            cbFiltroCategoria.Items.Clear();
+            cbFiltroMarca.Items.Clear();
+
+            cbFiltroCategoria.Items.AddRange(new string[] { "Celulares", "Televisores", "Media", "Audio" });
+            cbFiltroMarca.Items.AddRange(new string[] { "Samsung", "Apple", "Sony", "Huawei", "Motorola" });
+        }
+
+
+
+
+
+        private void CargarArticulos()
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+            listaArticulos = negocio.listar();
+            dgv_Articulos.DataSource = listaArticulos;
+            OcultarColumnas();
+
+        }
+
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,12 +92,14 @@ namespace Catalogo_TpMaxiPrograma
                 txtBusqueda.Focus();
             }));
 
-            NegocioArticulo negocioArticulo = new NegocioArticulo();
-            listaArticulos = negocioArticulo.listarTodos();
-            dgv_Articulos.DataSource = negocioArticulo.listarTodos();
-            PB_ImagenProducto.Load(listaArticulos[0].ImagenUrl);
-            OcultarColumnas();
+            CargarArticulos();
+            //combo box con opciones
+            CargarOpcionesComboBox();
         }
+
+
+
+
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
@@ -92,8 +121,15 @@ namespace Catalogo_TpMaxiPrograma
 
             dgv_Articulos.DataSource = listaFiltrada;
 
-            OcultarColumnas();
+            if (listaFiltrada.Count > 0)
+            {
+                dgv_Articulos.ClearSelection();
+                dgv_Articulos.Rows[0].Selected = true;
 
+                Articulo seleccionado = (Articulo)dgv_Articulos.Rows[0].DataBoundItem;
+
+            }
+            OcultarColumnas();
         }
 
         private void OcultarColumnas()
@@ -106,18 +142,111 @@ namespace Catalogo_TpMaxiPrograma
         {
             try
             {
-                if (dgv_Articulos != null)
+                if (dgv_Articulos.CurrentRow != null && dgv_Articulos.CurrentRow.DataBoundItem != null)
                 {
                     Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
                     PB_ImagenProducto.Load(seleccionado.ImagenUrl);
+                    lbl_Descripcion.Text = seleccionado.Descripcion;
+                    lblPrecio.Text = seleccionado.Precio.ToString();
                 }
             }
             catch
             {
-                PB_ImagenProducto.Load("https://uc91c3135ff277c06a85085a5957.previews.dropboxusercontent.com/p/thumb/ACqn0v7i0qjRKsE1CQEj94K6YD2qOO8iIe9nr9Okeb_bHrJB9Wa0vpcJANujPvsWOpfl6ROGTiivZ_H4PR17NMyo2115aDtY5EwxuocfRJTJ7tScwZfMfr7D8a8Ljr2d6b-z9dFHfdVQL6hUHtUOGf3PAcPppcJCoNkUGohkE6mvD7rUdiAffDorRwrp1Q3Cp3JUBqdGFb5OokB1B4HC3AMN5GunSQRrWIgSAg4IZWSyoqDUsJf1fYNNIBbMLhyUqBpuW_1L4VtGYFpPX9gkrTPTn7wNCaCplD2oDBUt84Uq2h5EPw8Dv5Ge6kgGN1cadSmTEhnHwqC-y5KllAKbkf16ZAq1RRLU_H-ZAf5HWVeoHdqRi0bouJTeWD6XXklhf4E/p.jpeg?is_prewarmed=true");
+                PB_ImagenProducto.Load("https://dl.dropboxusercontent.com/scl/fi/5luas6t52pjoz7ryja30i/no-data-found.png?rlkey=zlh4tsnf3yt0rvys1igwicjsx");
             }
         }
 
-        
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            FormAgregarArticulo nuevoForm = new FormAgregarArticulo();
+
+
+
+            nuevoForm.ShowDialog();
+            CargarArticulos();
+        }
+
+
+
+        private void btnEliminarBD_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+            Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem; //seleeciono el articulo
+
+
+            DialogResult resultado =
+            MessageBox.Show(
+            "¿Desea eliminar: " + seleccionado.Nombre + "?",
+            "Confirmación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("ID a eliminar: " + seleccionado.IdArticulo); // DEBUG
+                negocio.eliminarArticulo(seleccionado.IdArticulo);
+
+                MessageBox.Show("El artículo fue eliminado correctamente.");
+                CargarArticulos(); // actualizamos el listado, no olvidarme en los demas
+            }
+        }
+
+        private void btnEditarBD_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+            Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
+            FormAgregarArticulo editar = new FormAgregarArticulo(seleccionado);
+            editar.ShowDialog();
+            negocio.modificar(seleccionado);
+            CargarArticulos();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+
+            try
+            {
+                if (cbFiltroCategoria.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, seleccioná una categoría.");
+                    return;
+                }
+
+                if (cbFiltroMarca.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, seleccioná una marca.");
+                    return;
+                }
+
+                string categoria = cbFiltroCategoria.SelectedItem.ToString() ?? "";
+                string marca = cbFiltroMarca.SelectedItem.ToString() ?? "";
+
+                
+                if (string.IsNullOrEmpty(categoria) || string.IsNullOrEmpty(marca))
+                {
+                    MessageBox.Show("Por favor, seleccioná valores válidos en los filtros.");
+                    return;
+                }
+
+                // busqueda
+                dgv_Articulos.DataSource = negocio.listarFiltro(categoria, marca); 
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al filtrar: " + ex.Message);
+            }
+        }
+
+
+
+
+
     }
+
+
+
 }

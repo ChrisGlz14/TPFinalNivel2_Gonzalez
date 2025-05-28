@@ -3,49 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using baseDatos;
 using dominio;
 
 namespace baseDatos
 {
-    public class ConsultaDB : ConexionDB
+    public class ConsultaDB : AccesoDatos
     {
 
         public List<Articulo> EjecutarConsulta(string consulta)
         {
             List<Articulo> articulosLista = new List<Articulo>();
-
-            ConexionDB conexion = new ConexionDB();
             
             try
             {
-                SqlDataReader lector = EjecutarLectura(consulta);
+                SetConsulta(consulta);
+                ejecutarLectura();
 
-                while (lector.Read())
+                while (Lector.Read())
                 {
                     Articulo articulo = new Articulo();
-                    articulo.Nombre = lector["Nombre"].ToString();
-                    //articulo.IdArticulo = Convert.ToInt32(lector["IdArticulo"]);
-                    articulo.Codigo = lector["Codigo"].ToString();
-                    articulo.ImagenUrl = lector["ImagenUrl"].ToString();
-                    articulo.Descripcion = lector["DescripcionArticulo"].ToString();
-
+                    articulo.IdArticulo = Convert.ToInt32(Lector["IdArticulo"]);
+                    articulo.Nombre = Lector["Nombre"]?.ToString() ?? "";
+                    articulo.Codigo = Lector["Codigo"]?.ToString() ?? "";
+                    articulo.ImagenUrl = Lector["ImagenUrl"]?.ToString() ?? "";
+                    articulo.Descripcion = Lector["DescripcionArticulo"]?.ToString() ?? "";
                     articulo.Categoria = new Categoria
                     {
-                        IdCategoria = (int)lector["IdCategoria"],
-                        DescripcionCategoria = lector["DescripcionCategoria"].ToString()
+                        IdCategoria = (int)Lector["IdCategoria"],
+                        DescripcionCategoria = Lector["DescripcionCategoria"].ToString() ?? ""
                     };
 
                     articulo.Marca = new Marca
                     {
-                        IdMarca = (int)lector["IdMarca"],
-                        DescripcionMarca = lector["DescripcionMarca"].ToString()
+                        IdMarca = (int)Lector["IdMarca"],
+                        DescripcionMarca = Lector["DescripcionMarca"].ToString() ?? ""
                     };
-
-
-
-                    articulo.Precio = (decimal)lector["Precio"];
+                    articulo.Precio = (decimal)Lector["Precio"];
                     articulosLista.Add(articulo);
                 }
 
@@ -58,7 +53,7 @@ namespace baseDatos
             }
             finally
             {
-                conexion.CerrarConexion();
+                this.CerrarConexion();
             }
 
         }
