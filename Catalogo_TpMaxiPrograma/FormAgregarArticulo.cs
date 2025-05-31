@@ -148,10 +148,16 @@ namespace Catalogo_TpMaxiPrograma
                     MessageBox.Show("Felicitaciones Maxi! Articulo modificado correctamente.");
                     negocio.listar();
                 }
+                else
+                {
+                    MessageBox.Show("Por favor, complete todos los campos requeridos para agregar un elemento.");
+                    return;
+                }
 
 
 
-                Close();
+
+                    Close();
             }
             catch (Exception)
             {
@@ -167,14 +173,13 @@ namespace Catalogo_TpMaxiPrograma
         {
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
-                txt.BackColor = Color.Red;
                 lblError.ForeColor = Color.Red;
                 lblError.Visible = true;
                 return false;
             }
             else
             {
-                txt.BackColor = Color.White;
+                
                 lblError.Visible = false;
                 return true;
             }
@@ -204,5 +209,7 @@ namespace Catalogo_TpMaxiPrograma
         {
             cargarImagen(txtUrlImagen.Text);
         }
+
+       
     }
 }

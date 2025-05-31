@@ -11,7 +11,7 @@ namespace Catalogo_TpMaxiPrograma
     public partial class Form1 : Form
     {
         private List<Articulo> listaArticulos = new List<Articulo>();
-        public Form1 ()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -223,7 +223,7 @@ namespace Catalogo_TpMaxiPrograma
                 string categoria = cbFiltroCategoria.SelectedItem.ToString() ?? "";
                 string marca = cbFiltroMarca.SelectedItem.ToString() ?? "";
 
-                
+
                 if (string.IsNullOrEmpty(categoria) || string.IsNullOrEmpty(marca))
                 {
                     MessageBox.Show("Por favor, seleccioná valores válidos en los filtros.");
@@ -231,9 +231,9 @@ namespace Catalogo_TpMaxiPrograma
                 }
 
                 // busqueda
-                dgv_Articulos.DataSource = negocio.listarFiltro(categoria, marca); 
+                dgv_Articulos.DataSource = negocio.listarFiltro(categoria, marca);
 
-               
+
             }
             catch (Exception ex)
             {
@@ -241,10 +241,7 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
-
-
-
-
+       
     }
 
 
