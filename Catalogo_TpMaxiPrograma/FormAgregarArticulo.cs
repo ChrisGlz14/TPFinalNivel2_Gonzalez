@@ -100,8 +100,8 @@ namespace Catalogo_TpMaxiPrograma
                     articulo.Codigo = txtCodigo.Text;
                     articulo.Nombre = txtNombre.Text;
                     articulo.Descripcion = txtDescripcion.Text;
-                   
-                    
+
+
                     if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
                     {
                         MessageBox.Show("El precio debe ser un número válido.");
@@ -112,7 +112,7 @@ namespace Catalogo_TpMaxiPrograma
 
                     articulo.ImagenUrl = txtUrlImagen.Text;
 
-                    if(cbCategoria.SelectedItem == null || cbMarca.SelectedItem == null)
+                    if (cbCategoria.SelectedItem == null || cbMarca.SelectedItem == null)
                     {
                         MessageBox.Show("Debes seleccionar una categoría y una marca.");
                         return;
@@ -160,12 +160,8 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
-        private void txtUrlImagen_TextChanged(object sender, EventArgs e)
-        {
-            cargarImagen(txtUrlImagen.Text);
-        }
 
-       
+
         // Metodo para poder hacer validaciones 
         private bool ValidarCampo(TextBox txt, Label lbl, Label lblError)
         {
@@ -204,6 +200,9 @@ namespace Catalogo_TpMaxiPrograma
             ValidarCampo(txtNombre, lblNombre, lblReqNombre);
         }
 
-        
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
     }
 }

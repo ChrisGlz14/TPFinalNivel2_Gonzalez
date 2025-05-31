@@ -151,7 +151,7 @@
             txtUrlImagen.Name = "txtUrlImagen";
             txtUrlImagen.Size = new Size(118, 23);
             txtUrlImagen.TabIndex = 10;
-            txtUrlImagen.TextChanged += txtUrlImagen_TextChanged;
+            txtUrlImagen.Leave += txtUrlImagen_Leave;
             // 
             // lblPrecio
             // 
