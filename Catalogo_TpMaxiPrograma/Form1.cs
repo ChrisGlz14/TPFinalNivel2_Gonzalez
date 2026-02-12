@@ -107,11 +107,7 @@ namespace Catalogo_TpMaxiPrograma
 
             string Filtro = txtBusqueda.Text.Trim();
 
-<<<<<<< HEAD
             if (Filtro.Length >= 4)
-=======
-            if (Filtro.Length > 0)
->>>>>>> bc3986b9dd2694ef240a6b7cd98105f6f0eafce8
             {
                 listaFiltrada = listaArticulos.FindAll(Articulo =>
                 Articulo.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
@@ -198,13 +194,8 @@ namespace Catalogo_TpMaxiPrograma
 
         private void btnEditarBD_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-            if (dgv_Articulos.CurrentRow ==null || dgv_Articulos.Columns == null)
-            {
-                MessageBox.Show("No hay ningún artículo seleccionado para editar.");
-
-            } else
+            if (dgv_Articulos.CurrentRow != null && dgv_Articulos.Columns != null)
             {
                 NegocioArticulo negocio = new NegocioArticulo();
                 Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
@@ -214,16 +205,12 @@ namespace Catalogo_TpMaxiPrograma
                 CargarArticulos();
 
             }
+            else
+            {
+                MessageBox.Show("No hay ningún artículo seleccionado para editar.");
 
+            }
 
-=======
-            NegocioArticulo negocio = new NegocioArticulo();
-            Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
-            FormAgregarArticulo editar = new FormAgregarArticulo(seleccionado);
-            editar.ShowDialog();
-            negocio.modificar(seleccionado);
-            CargarArticulos();
->>>>>>> bc3986b9dd2694ef240a6b7cd98105f6f0eafce8
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
