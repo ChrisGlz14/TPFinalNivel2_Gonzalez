@@ -146,6 +146,7 @@ namespace Catalogo_TpMaxiPrograma
                 {
                     Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
                     PB_ImagenProducto.Load(seleccionado.ImagenUrl);
+                    PB_ImagenProducto.SizeMode = PictureBoxSizeMode.Zoom;   
                     lbl_Descripcion.Text = seleccionado.Descripcion;
                     lblPrecio.Text = seleccionado.Precio.ToString();
                 }

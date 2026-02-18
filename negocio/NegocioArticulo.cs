@@ -54,7 +54,7 @@ namespace negocio
             try
             {
                 {
-                    datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagenUrl, IdCategoria = @idCategoria, IdMarca = @idMarca Where Id = @id");
+                    datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagenUrl, IdCategoria = @idCategoria, Precio = @precio, IdMarca = @idMarca Where Id = @id");
 
                     datos.setParametro("@codigo", art.Codigo);
                     datos.setParametro("@nombre", art.Nombre);
@@ -62,7 +62,9 @@ namespace negocio
                     datos.setParametro("@imagenUrl", art.ImagenUrl);
                     datos.setParametro("@idCategoria", art.Categoria.IdCategoria);
                     datos.setParametro("@idMarca",art.Marca.IdMarca);
+                    datos.setParametro("@precio", art.Precio);
                     datos.setParametro("@id", art.IdArticulo);
+                    
                     datos.EjecutarAccion();
                 }
             }

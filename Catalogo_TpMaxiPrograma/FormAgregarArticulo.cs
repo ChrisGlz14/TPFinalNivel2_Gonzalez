@@ -78,6 +78,7 @@ namespace Catalogo_TpMaxiPrograma
             try
             {
                 pbNuevoArticulo.Load(imagen);
+                pbNuevoArticulo.SizeMode = PictureBoxSizeMode.Zoom;
             }
             catch (Exception ex)
             {

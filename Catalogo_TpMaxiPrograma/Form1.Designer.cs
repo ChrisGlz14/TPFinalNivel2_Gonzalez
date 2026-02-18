@@ -59,6 +59,7 @@
             // 
             // PB_ImagenProducto
             // 
+            PB_ImagenProducto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             PB_ImagenProducto.Location = new Point(873, 99);
             PB_ImagenProducto.Name = "PB_ImagenProducto";
             PB_ImagenProducto.Size = new Size(434, 384);
@@ -119,6 +120,7 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.Silver;
             dgv_Articulos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgv_Articulos.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dgv_Articulos.BorderStyle = BorderStyle.None;
             dgv_Articulos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.BackColor = SystemColors.AppWorkspace;
@@ -150,12 +152,13 @@
             dgv_Articulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_Articulos.RowTemplate.Height = 35;
             dgv_Articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_Articulos.Size = new Size(855, 383);
+            dgv_Articulos.Size = new Size(644, 383);
             dgv_Articulos.TabIndex = 6;
             dgv_Articulos.SelectionChanged += dgv_Articulos_SelectionChanged;
             // 
             // btnBuscar
             // 
+            btnBuscar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnBuscar.Location = new Point(444, 562);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
@@ -177,6 +180,7 @@
             // 
             // cbFiltroCategoria
             // 
+            cbFiltroCategoria.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cbFiltroCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFiltroCategoria.FormattingEnabled = true;
             cbFiltroCategoria.Location = new Point(87, 563);
@@ -186,6 +190,7 @@
             // 
             // cbFiltroMarca
             // 
+            cbFiltroMarca.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cbFiltroMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFiltroMarca.FormattingEnabled = true;
             cbFiltroMarca.Location = new Point(283, 562);
@@ -195,6 +200,7 @@
             // 
             // lbl_Descripcion
             // 
+            lbl_Descripcion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lbl_Descripcion.AutoSize = true;
             lbl_Descripcion.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl_Descripcion.Location = new Point(1015, 506);
@@ -205,6 +211,7 @@
             // 
             // btnAgregarArticulo
             // 
+            btnAgregarArticulo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAgregarArticulo.Location = new Point(170, 489);
             btnAgregarArticulo.Name = "btnAgregarArticulo";
             btnAgregarArticulo.Size = new Size(107, 29);
@@ -215,6 +222,7 @@
             // 
             // lblPrecio
             // 
+            lblPrecio.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPrecio.Location = new Point(969, 567);
@@ -225,6 +233,7 @@
             // 
             // panelMinMaxClose
             // 
+            panelMinMaxClose.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelMinMaxClose.BackColor = Color.Gray;
             panelMinMaxClose.Controls.Add(btnMax);
             panelMinMaxClose.Controls.Add(btnMin);
@@ -238,6 +247,7 @@
             // 
             // lblCat
             // 
+            lblCat.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblCat.AutoSize = true;
             lblCat.Location = new Point(20, 566);
             lblCat.Name = "lblCat";
@@ -247,6 +257,7 @@
             // 
             // lblMarca
             // 
+            lblMarca.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblMarca.AutoSize = true;
             lblMarca.Location = new Point(234, 565);
             lblMarca.Name = "lblMarca";
@@ -256,6 +267,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(894, 506);
@@ -266,6 +278,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(894, 567);
@@ -276,6 +289,7 @@
             // 
             // btnEliminarBD
             // 
+            btnEliminarBD.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEliminarBD.Location = new Point(12, 489);
             btnEliminarBD.Name = "btnEliminarBD";
             btnEliminarBD.Size = new Size(132, 29);
@@ -286,6 +300,7 @@
             // 
             // btnEditarBD
             // 
+            btnEditarBD.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEditarBD.Location = new Point(297, 489);
             btnEditarBD.Name = "btnEditarBD";
             btnEditarBD.Size = new Size(107, 29);
