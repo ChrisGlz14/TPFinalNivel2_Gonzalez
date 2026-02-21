@@ -41,6 +41,9 @@ namespace baseDatos
                         DescripcionMarca = Lector["DescripcionMarca"].ToString() ?? ""
                     };
                     articulo.Precio = (decimal)Lector["Precio"];
+                    articulo.Cantidad = Lector["Cantidad"] != DBNull.Value
+                    ? Convert.ToInt32(Lector["Cantidad"])
+                    : 0;
                     articulosLista.Add(articulo);
                 }
 
