@@ -146,7 +146,7 @@ namespace Catalogo_TpMaxiPrograma
                 {
                     Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
                     PB_ImagenProducto.Load(seleccionado.ImagenUrl);
-                    PB_ImagenProducto.SizeMode = PictureBoxSizeMode.Zoom;   
+                    PB_ImagenProducto.SizeMode = PictureBoxSizeMode.Zoom;
                     lbl_Descripcion.Text = seleccionado.Descripcion;
                     lblPrecio.Text = seleccionado.Precio.ToString();
                 }
@@ -160,9 +160,6 @@ namespace Catalogo_TpMaxiPrograma
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             FormAgregarArticulo nuevoForm = new FormAgregarArticulo();
-
-
-
             nuevoForm.ShowDialog();
             CargarArticulos();
         }
@@ -253,7 +250,7 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
-       
+        
     }
 
 

@@ -47,6 +47,8 @@
             lblCodigo = new Label();
             lblReqNombre = new Label();
             lblReqPrecio = new Label();
+            txtCantidad = new TextBox();
+            lblCantidad = new Label();
             ((System.ComponentModel.ISupportInitialize)pbNuevoArticulo).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             // lblMarca
             // 
             lblMarca.AutoSize = true;
-            lblMarca.Location = new Point(51, 339);
+            lblMarca.Location = new Point(51, 365);
             lblMarca.Name = "lblMarca";
             lblMarca.Size = new Size(43, 15);
             lblMarca.TabIndex = 3;
@@ -89,7 +91,7 @@
             // lblCategoria
             // 
             lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(33, 397);
+            lblCategoria.Location = new Point(33, 423);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(61, 15);
             lblCategoria.TabIndex = 4;
@@ -99,7 +101,7 @@
             // 
             cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCategoria.FormattingEnabled = true;
-            cbCategoria.Location = new Point(100, 394);
+            cbCategoria.Location = new Point(100, 420);
             cbCategoria.Name = "cbCategoria";
             cbCategoria.Size = new Size(118, 23);
             cbCategoria.TabIndex = 5;
@@ -108,7 +110,7 @@
             // 
             cbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMarca.FormattingEnabled = true;
-            cbMarca.Location = new Point(100, 331);
+            cbMarca.Location = new Point(100, 357);
             cbMarca.Name = "cbMarca";
             cbMarca.Size = new Size(118, 23);
             cbMarca.TabIndex = 6;
@@ -138,7 +140,7 @@
             // 
             // pbNuevoArticulo
             // 
-            pbNuevoArticulo.Location = new Point(263, 12);
+            pbNuevoArticulo.Location = new Point(263, 41);
             pbNuevoArticulo.Name = "pbNuevoArticulo";
             pbNuevoArticulo.Size = new Size(338, 331);
             pbNuevoArticulo.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -222,11 +224,29 @@
             lblReqPrecio.TabIndex = 18;
             lblReqPrecio.Text = "*";
             // 
+            // txtCantidad
+            // 
+            txtCantidad.Location = new Point(100, 316);
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(118, 23);
+            txtCantidad.TabIndex = 19;
+            // 
+            // lblCantidad
+            // 
+            lblCantidad.AutoSize = true;
+            lblCantidad.Location = new Point(26, 319);
+            lblCantidad.Name = "lblCantidad";
+            lblCantidad.Size = new Size(55, 15);
+            lblCantidad.TabIndex = 20;
+            lblCantidad.Text = "Cantidad";
+            // 
             // FormAgregarArticulo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(627, 475);
+            Controls.Add(lblCantidad);
+            Controls.Add(txtCantidad);
             Controls.Add(lblReqPrecio);
             Controls.Add(lblReqNombre);
             Controls.Add(lblCodigo);
@@ -276,5 +296,7 @@
         private Label lblCodigo;
         private Label lblReqNombre;
         private Label lblReqPrecio;
+        private TextBox txtCantidad;
+        private Label lblCantidad;
     }
 }

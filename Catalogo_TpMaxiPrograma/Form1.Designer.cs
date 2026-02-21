@@ -39,7 +39,7 @@
             txtBusqueda = new TextBox();
             dgv_Articulos = new DataGridView();
             btnBuscar = new Button();
-            label = new Label();
+            lblFiltroBuscar = new Label();
             cbFiltroCategoria = new ComboBox();
             cbFiltroMarca = new ComboBox();
             lbl_Descripcion = new Label();
@@ -48,10 +48,12 @@
             panelMinMaxClose = new Panel();
             lblCat = new Label();
             lblMarca = new Label();
-            label1 = new Label();
-            label2 = new Label();
+            lblDescripcion = new Label();
+            lbl_Precio = new Label();
             btnEliminarBD = new Button();
             btnEditarBD = new Button();
+            lblDolar = new Label();
+            lblPrecioDolar = new Label();
             ((System.ComponentModel.ISupportInitialize)PB_ImagenProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Articulos).BeginInit();
             panelMinMaxClose.SuspendLayout();
@@ -110,6 +112,7 @@
             // 
             // txtBusqueda
             // 
+            txtBusqueda.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBusqueda.Location = new Point(141, 69);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.Size = new Size(221, 23);
@@ -120,7 +123,8 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.Silver;
             dgv_Articulos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgv_Articulos.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dgv_Articulos.Anchor = AnchorStyles.Left;
+            dgv_Articulos.BackgroundColor = SystemColors.ScrollBar;
             dgv_Articulos.BorderStyle = BorderStyle.None;
             dgv_Articulos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.BackColor = SystemColors.AppWorkspace;
@@ -152,7 +156,7 @@
             dgv_Articulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_Articulos.RowTemplate.Height = 35;
             dgv_Articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_Articulos.Size = new Size(644, 383);
+            dgv_Articulos.Size = new Size(746, 383);
             dgv_Articulos.TabIndex = 6;
             dgv_Articulos.SelectionChanged += dgv_Articulos_SelectionChanged;
             // 
@@ -167,16 +171,17 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
-            // label
+            // lblFiltroBuscar
             // 
-            label.AccessibleRole = AccessibleRole.Document;
-            label.AutoSize = true;
-            label.Font = new Font("Segoe UI", 15F);
-            label.Location = new Point(12, 64);
-            label.Name = "label";
-            label.Size = new Size(123, 28);
-            label.TabIndex = 8;
-            label.Text = "Filtro Buscar:";
+            lblFiltroBuscar.AccessibleRole = AccessibleRole.Document;
+            lblFiltroBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblFiltroBuscar.AutoSize = true;
+            lblFiltroBuscar.Font = new Font("Segoe UI", 15F);
+            lblFiltroBuscar.Location = new Point(12, 64);
+            lblFiltroBuscar.Name = "lblFiltroBuscar";
+            lblFiltroBuscar.Size = new Size(123, 28);
+            lblFiltroBuscar.TabIndex = 8;
+            lblFiltroBuscar.Text = "Filtro Buscar:";
             // 
             // cbFiltroCategoria
             // 
@@ -203,7 +208,7 @@
             lbl_Descripcion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lbl_Descripcion.AutoSize = true;
             lbl_Descripcion.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Descripcion.Location = new Point(1015, 506);
+            lbl_Descripcion.Location = new Point(994, 494);
             lbl_Descripcion.Name = "lbl_Descripcion";
             lbl_Descripcion.Size = new Size(36, 25);
             lbl_Descripcion.TabIndex = 11;
@@ -225,7 +230,7 @@
             lblPrecio.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPrecio.Location = new Point(969, 567);
+            lblPrecio.Location = new Point(948, 534);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(36, 25);
             lblPrecio.TabIndex = 13;
@@ -265,27 +270,27 @@
             lblMarca.TabIndex = 16;
             lblMarca.Text = "Marca:";
             // 
-            // label1
+            // lblDescripcion
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(894, 506);
-            label1.Name = "label1";
-            label1.Size = new Size(115, 25);
-            label1.TabIndex = 17;
-            label1.Text = "Descripcion:";
+            lblDescripcion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDescripcion.Location = new Point(873, 494);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new Size(115, 25);
+            lblDescripcion.TabIndex = 17;
+            lblDescripcion.Text = "Descripcion:";
             // 
-            // label2
+            // lbl_Precio
             // 
-            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(894, 567);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 25);
-            label2.TabIndex = 18;
-            label2.Text = "Precio:";
+            lbl_Precio.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lbl_Precio.AutoSize = true;
+            lbl_Precio.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_Precio.Location = new Point(873, 534);
+            lbl_Precio.Name = "lbl_Precio";
+            lbl_Precio.Size = new Size(69, 25);
+            lbl_Precio.TabIndex = 18;
+            lbl_Precio.Text = "Precio:";
             // 
             // btnEliminarBD
             // 
@@ -309,16 +314,40 @@
             btnEditarBD.UseVisualStyleBackColor = true;
             btnEditarBD.Click += btnEditarBD_Click;
             // 
+            // lblDolar
+            // 
+            lblDolar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblDolar.AutoSize = true;
+            lblDolar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDolar.Location = new Point(873, 578);
+            lblDolar.Name = "lblDolar";
+            lblDolar.Size = new Size(120, 25);
+            lblDolar.TabIndex = 21;
+            lblDolar.Text = "Precio Dolar:";
+            // 
+            // lblPrecioDolar
+            // 
+            lblPrecioDolar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblPrecioDolar.AutoSize = true;
+            lblPrecioDolar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPrecioDolar.Location = new Point(994, 578);
+            lblPrecioDolar.Name = "lblPrecioDolar";
+            lblPrecioDolar.Size = new Size(36, 25);
+            lblPrecioDolar.TabIndex = 22;
+            lblPrecioDolar.Text = "---";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(194, 194, 194);
             ClientSize = new Size(1350, 628);
+            Controls.Add(lblPrecioDolar);
+            Controls.Add(lblDolar);
             Controls.Add(btnEditarBD);
             Controls.Add(btnEliminarBD);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lbl_Precio);
+            Controls.Add(lblDescripcion);
             Controls.Add(lblMarca);
             Controls.Add(lblCat);
             Controls.Add(panelMinMaxClose);
@@ -327,7 +356,7 @@
             Controls.Add(lbl_Descripcion);
             Controls.Add(cbFiltroMarca);
             Controls.Add(cbFiltroCategoria);
-            Controls.Add(label);
+            Controls.Add(lblFiltroBuscar);
             Controls.Add(btnBuscar);
             Controls.Add(dgv_Articulos);
             Controls.Add(txtBusqueda);
@@ -353,7 +382,7 @@
         private TextBox txtBusqueda;
         private DataGridView dgv_Articulos;
         private Button btnBuscar;
-        private Label label;
+        private Label lblFiltroBuscar;
         private ComboBox cbFiltroCategoria;
         private ComboBox cbFiltroMarca;
         private Label lbl_Descripcion;
@@ -362,9 +391,11 @@
         private Panel panelMinMaxClose;
         private Label lblCat;
         private Label lblMarca;
-        private Label label1;
-        private Label label2;
+        private Label lblDescripcion;
+        private Label lbl_Precio;
         private Button btnEliminarBD;
         private Button btnEditarBD;
+        private Label lblDolar;
+        private Label lblPrecioDolar;
     }
 }

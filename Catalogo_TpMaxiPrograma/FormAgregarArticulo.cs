@@ -60,6 +60,7 @@ namespace Catalogo_TpMaxiPrograma
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtPrecio.Text = articulo.Precio.ToString();
+                    txtCantidad.Text = articulo.Cantidad.ToString();
                     txtDescripcion.Text = articulo.Descripcion;
                     txtUrlImagen.Text = articulo.ImagenUrl;
                     cargarImagen(articulo.ImagenUrl);
@@ -103,6 +104,7 @@ namespace Catalogo_TpMaxiPrograma
                     articulo.Descripcion = txtDescripcion.Text;
 
 
+
                     if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
                     {
                         MessageBox.Show("El precio debe ser un número válido.");
@@ -110,6 +112,7 @@ namespace Catalogo_TpMaxiPrograma
                     }
 
                     articulo.Precio = precio;
+                    articulo.Cantidad = int.Parse(txtCantidad.Text);
 
                     articulo.ImagenUrl = txtUrlImagen.Text;
 
@@ -132,6 +135,7 @@ namespace Catalogo_TpMaxiPrograma
                     articulo.Nombre = txtNombre.Text;
                     articulo.Descripcion = txtDescripcion.Text;
                     articulo.Precio = decimal.Parse(txtPrecio.Text);
+                    articulo.Cantidad = int.Parse(txtCantidad.Text);
                     articulo.ImagenUrl = txtUrlImagen.Text;
 
                     //Validacion de que tenemos una cat y marca seleccionada

@@ -14,6 +14,7 @@ namespace negocio
                                 "A.Nombre, " +
                                 "A.ImagenUrl, " +
                                 "A.Precio, " +
+                                "A.Cantidad, " +
                                 "A.Descripcion AS DescripcionArticulo, " +
                                 "C.Id AS IdCategoria, " +
                                 "C.Descripcion AS DescripcionCategoria, " +
@@ -54,7 +55,7 @@ namespace negocio
             try
             {
                 {
-                    datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagenUrl, IdCategoria = @idCategoria, Precio = @precio, IdMarca = @idMarca Where Id = @id");
+                    datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagenUrl, IdCategoria = @idCategoria, Precio = @precio,Cantidad = @Cantidad, IdMarca = @idMarca Where Id = @id");
 
                     datos.setParametro("@codigo", art.Codigo);
                     datos.setParametro("@nombre", art.Nombre);
@@ -63,6 +64,7 @@ namespace negocio
                     datos.setParametro("@idCategoria", art.Categoria.IdCategoria);
                     datos.setParametro("@idMarca",art.Marca.IdMarca);
                     datos.setParametro("@precio", art.Precio);
+                    datos.setParametro("@Cantidad", art.Cantidad);
                     datos.setParametro("@id", art.IdArticulo);
                     
                     datos.EjecutarAccion();
@@ -80,15 +82,16 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             NegocioArticulo articulo = new NegocioArticulo();
             NegocioCategoria negocioCat = new NegocioCategoria();
-            NegocioMarca NegocioMarca = new NegocioMarca(); 
+            NegocioMarca NegocioMarca = new NegocioMarca();
             try
             {
-                datos.SetConsulta("INSERT into ARTICULOS (Codigo,Nombre,Descripcion,IdCategoria,Precio ,ImagenUrl,IdMarca)values(@Codigo, @Nombre, @Descripcion, @IdCategoria, @Precio, @ImagenUrl, @IdMarca)");
+                datos.SetConsulta("INSERT into ARTICULOS (Codigo,Nombre,Descripcion,IdCategoria,Precio,Cantidad,ImagenUrl,IdMarca)values(@Codigo, @Nombre, @Descripcion, @IdCategoria, @Precio, @Cantidad, @ImagenUrl, @IdMarca)");
                 datos.setParametro("@Codigo", nuevoArt.Codigo);
                 datos.setParametro("@Nombre", nuevoArt.Nombre);
                 datos.setParametro("@Descripcion", nuevoArt.Descripcion);
                 datos.setParametro("@IdCategoria", nuevoArt.Categoria.IdCategoria);
                 datos.setParametro("@Precio", nuevoArt.Precio);
+                datos.setParametro("@Cantidad", nuevoArt.Cantidad);
                 datos.setParametro("@ImagenUrl", nuevoArt.ImagenUrl);
                 datos.setParametro("@IdMarca", nuevoArt.Marca.IdMarca);
                 datos.EjecutarAccion();
@@ -114,6 +117,7 @@ namespace negocio
                                   "A.Nombre, " +
                                   "A.ImagenUrl, " +
                                   "A.Precio, " +
+                                  "A.Cantidad, " +
                                   "A.Descripcion AS DescripcionArticulo, " +
                                   "C.Id AS IdCategoria, " +
                                   "C.Descripcion AS DescripcionCategoria, " +
@@ -169,6 +173,7 @@ namespace negocio
                     art.Nombre = datos.Lector["Nombre"].ToString() ?? "";
                     art.ImagenUrl = datos.Lector["ImagenUrl"].ToString() ?? "";
                     art.Precio = (decimal)datos.Lector["Precio"];
+                    art.Cantidad = (int)datos.Lector["Cantidad"];
                     art.Descripcion = datos.Lector["DescripcionArticulo"].ToString() ?? "";
 
                     art.Categoria = new Categoria();

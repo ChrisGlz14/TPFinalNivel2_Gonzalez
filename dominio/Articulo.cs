@@ -12,6 +12,8 @@ namespace dominio
         public string ImagenUrl { get; set; }
         public decimal Precio { get; set; }
 
+        public int Cantidad { get; set; } 
+
 
 
         public override string ToString()
