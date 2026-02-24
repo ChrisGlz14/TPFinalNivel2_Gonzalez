@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using System.Globalization;
 
-namespace Catalogo_TpMaxiPrograma
+namespace CatalogoApp
 
 {
 

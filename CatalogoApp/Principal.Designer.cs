@@ -1,4 +1,4 @@
-﻿namespace Catalogo_TpMaxiPrograma
+﻿namespace CatalogoApp
 {
     partial class PrincipalForm
     {

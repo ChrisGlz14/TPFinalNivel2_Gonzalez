@@ -1,6 +1,6 @@
 using dominio;
 
-namespace Catalogo_TpMaxiPrograma
+namespace CatalogoApp
 {
     internal static class Program
     {

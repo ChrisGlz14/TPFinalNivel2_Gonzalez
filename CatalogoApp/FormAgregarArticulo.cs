@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Catalogo_TpMaxiPrograma
+namespace CatalogoApp
 {
     public partial class FormAgregarArticulo : Form
     {
