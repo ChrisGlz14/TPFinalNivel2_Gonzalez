@@ -126,7 +126,7 @@ namespace Catalogo_TpMaxiPrograma
                     articulo.Marca = (Marca)cbMarca.SelectedItem;
                     cargarImagen(pbNuevoArticulo.Text);
                     negocio.Agregar(articulo);
-                    MessageBox.Show("Felicitaciones Maxi! Articulo agregado correctamente.");
+                    MessageBox.Show("Articulo agregado correctamente.");
                     negocio.listar();
                 }
                 else if (articulo.IdArticulo != 0)
@@ -150,7 +150,7 @@ namespace Catalogo_TpMaxiPrograma
                     articulo.Marca = (Marca)cbMarca.SelectedItem;
                     cargarImagen(pbNuevoArticulo.Text);
                     negocio.modificar(articulo);
-                    MessageBox.Show("Felicitaciones Maxi! Articulo modificado correctamente.");
+                    MessageBox.Show("Articulo modificado correctamente.");
                     negocio.listar();
                 }
                 else

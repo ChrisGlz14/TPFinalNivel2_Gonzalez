@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11512.155 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogo_TpMaxiPrograma", "Catalogo_TpMaxiPrograma\Catalogo_TpMaxiPrograma.csproj", "{AC51CD51-7F0D-4562-88B7-B851CA45B25B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoApp", "Catalogo_TpMaxiPrograma\CatalogoApp.csproj", "{AC51CD51-7F0D-4562-88B7-B851CA45B25B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{79C0B4BD-CAFC-4F8C-8D18-9B0697F85331}"
 EndProject
