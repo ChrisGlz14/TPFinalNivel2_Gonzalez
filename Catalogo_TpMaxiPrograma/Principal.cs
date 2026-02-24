@@ -3,15 +3,16 @@ using negocio;
 using baseDatos;
 using System.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using System.Globalization;
 
 namespace Catalogo_TpMaxiPrograma
 
 {
 
-    public partial class Form1 : Form
+    public partial class PrincipalForm : Form
     {
         private List<Articulo> listaArticulos = new List<Articulo>();
-        public Form1()
+        public PrincipalForm()
         {
             InitializeComponent();
         }
@@ -34,6 +35,12 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
+        private void PrincipalCentrado(object sender, EventArgs e)
+        {
+            panelCentrado.Left = (this.ClientSize.Width - panelCentrado.Width) / 2;
+            panelCentrado.Top = (this.ClientSize.Height - panelCentrado.Height) / 2;
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,13 +48,15 @@ namespace Catalogo_TpMaxiPrograma
 
         private void btnMax_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
+            if (this.WindowState == FormWindowState.Normal)
             {
-                WindowState = FormWindowState.Maximized;
+
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
             }
             else
             {
-                WindowState = FormWindowState.Normal;
+                this.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -147,8 +156,10 @@ namespace Catalogo_TpMaxiPrograma
                     Articulo seleccionado = (Articulo)dgv_Articulos.CurrentRow.DataBoundItem;
                     PB_ImagenProducto.Load(seleccionado.ImagenUrl);
                     PB_ImagenProducto.SizeMode = PictureBoxSizeMode.Zoom;
-                    lbl_Descripcion.Text = seleccionado.Descripcion;
-                    lblPrecio.Text = seleccionado.Precio.ToString();
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    lblPrecio.Text = seleccionado.Precio.ToString("C", new CultureInfo("es-AR"));
+                    lblCantidadText.Text = seleccionado.Cantidad.ToString();
+                    lblPrecioTotalText.Text = (seleccionado.Precio * seleccionado.Cantidad).ToString("C", new CultureInfo("es-AR"));
                 }
             }
             catch
@@ -250,7 +261,7 @@ namespace Catalogo_TpMaxiPrograma
             }
         }
 
-        
+     
     }
 
 

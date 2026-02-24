@@ -21,8 +21,14 @@ namespace dominio
             return $"Precio: ${Precio}";
         }
 
-         
+        public string ToString(int cantidad)
+        {
+            return $"Cantidad: {cantidad}";
         }
+
+
+    }
+
 
    
 
