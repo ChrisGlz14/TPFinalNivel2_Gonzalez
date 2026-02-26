@@ -53,6 +53,11 @@ Esta separación permite una mejor mantenibilidad y facilita futuras mejoras.
 
 ---
 
+## 🛠 Imagenes
+<img width="1350" height="769" alt="Screenshot_11" src="https://github.com/user-attachments/assets/b396f848-2ff2-428f-9d96-5cb909c718f5" />
+<img width="1351" height="771" alt="Screenshot_10" src="https://github.com/user-attachments/assets/9696465b-895d-4503-9f29-5af13bb4fd65" />
+
+
 ## ⚙ Instalación
 
 1. Clonar el repositorio:
